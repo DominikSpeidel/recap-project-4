@@ -1,0 +1,15 @@
+.toggleButton {
+  padding-left: 30px;
+}
+
+.main-container {
+  max-width: 650px;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
+.theme-title {
+  font-size: 2rem;
+  margin: 0 auto;
+  padding-top: 20px;
+}

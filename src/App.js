@@ -1,6 +1,26 @@
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import { themes as initialThemes } from "./db.js";
+import Theme from "./Theme.js";
+import ThemeForm from "./ThemeForm.js";
+import { v4 as uuid } from "uuid";
 
-function App() {   
+export default function App() {
+  const [themes, setThemes] = useState(initialThemes);
+
+  function handleAddTheme(newTheme) {
+    const newThemeWithId = { ...newTheme, id: uuid() };
+    setThemes([newThemeWithId, ...themes]);
+  }
+  return (
+    <>
+      <header className="header">
+        <h1>Theme Creator</h1>
+      </header>
+      <ThemeForm onSubmit={handleAddTheme} />
+      {themes.map((theme) => (
+        <Theme name={theme.name} colors={theme.colors} />
+      ))}
+    </>
+  );
 }
-
-export default App;

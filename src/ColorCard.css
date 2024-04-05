@@ -1,0 +1,25 @@
+.color-card {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.color-card__display {
+  width: 150px;
+  height: 100px;
+  border-radius: 0 10px 10px 0;
+}
+
+.color-card__info {
+  width: 125px;
+  height: 100px;
+  background-color: rgb(220, 219, 219);
+  border-radius: 10px 0 0 10px;
+}
+
+.color-card__role {
+  font-weight: 600;
+}
+
+.color-card__hex {
+  font-weight: 300;
+}
