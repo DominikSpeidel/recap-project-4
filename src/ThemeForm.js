@@ -50,7 +50,7 @@ export default function ThemeForm({ onSubmit }) {
       <form onSubmit={handleSubmit}>
         <h2>Add a theme</h2>
         <input type="text" name="name" required></input>
-        <fieldset>
+        <article>
           {initialData.colors.map((color) => (
             <input
               key={color.role}
@@ -59,7 +59,7 @@ export default function ThemeForm({ onSubmit }) {
               defaultValue={color.value}
             />
           ))}
-        </fieldset>
+        </article>
         <button type="input">Add Theme</button>
       </form>
     </div>

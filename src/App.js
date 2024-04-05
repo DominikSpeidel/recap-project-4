@@ -12,6 +12,12 @@ export default function App() {
     const newThemeWithId = { ...newTheme, id: uuid() };
     setThemes([newThemeWithId, ...themes]);
   }
+
+  function handleDeleteTheme(id) {
+    //console.log(id);
+    setThemes(themes.filter((theme) => theme.id !== id));
+  }
+
   return (
     <>
       <header className="header">
@@ -19,7 +25,12 @@ export default function App() {
       </header>
       <ThemeForm onSubmit={handleAddTheme} />
       {themes.map((theme) => (
-        <Theme name={theme.name} colors={theme.colors} />
+        <Theme
+          name={theme.name}
+          colors={theme.colors}
+          onHandleDelete={handleDeleteTheme}
+          id={theme.id}
+        />
       ))}
     </>
   );
