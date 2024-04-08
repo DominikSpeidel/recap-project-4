@@ -40,7 +40,6 @@ export default function EditForm({ onSubmit, colors }) {
         },
       ],
     };
-
     onSubmit(newTheme);
   }
 
@@ -59,7 +58,7 @@ export default function EditForm({ onSubmit, colors }) {
             />
           ))}
         </article>
-        <button className="saveButton" type="input">
+        <button className="saveButton" type="submit">
           Save Theme
         </button>
       </form>

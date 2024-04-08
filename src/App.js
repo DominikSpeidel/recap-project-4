@@ -33,6 +33,7 @@ export default function App() {
           colors={theme.colors}
           onHandleDelete={handleDeleteTheme}
           id={theme.id}
+          onSubmit={handleAddTheme}
         />
       ))}
     </>

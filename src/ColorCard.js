@@ -16,7 +16,7 @@ export default function ColorCard({ color }) {
       return data;
     }
     fetchColorName();
-  }, [color]);
+  }, [color]); // hier darauf achten, evtl. brachst du color.value als Eingabe nach Part 6
 
   return (
     <article className="color-card">
