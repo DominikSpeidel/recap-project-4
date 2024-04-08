@@ -1,4 +1,6 @@
-const INITIAL_THEME = {
+import "./EditForm.css";
+
+/*const INITIAL_THEME = {
   name: "",
   colors: [
     { role: "primary", value: "#6200ee" },
@@ -6,10 +8,10 @@ const INITIAL_THEME = {
     { role: "surface", value: "#ffffff" },
     { role: "surface-on", value: "#000000" },
   ],
-};
+};*/
 
-export default function ThemeForm({ onSubmit }) {
-  const initialData = INITIAL_THEME;
+export default function EditForm({ onSubmit, colors }) {
+  const initialData = colors;
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -45,10 +47,10 @@ export default function ThemeForm({ onSubmit }) {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <h2>Add a theme</h2>
+        <h3 className="edit">Edit Theme</h3>
         <input type="text" name="name" required></input>
         <article>
-          {initialData.colors.map((color) => (
+          {initialData.map((color) => (
             <input
               key={color.role}
               type="color"
@@ -57,7 +59,9 @@ export default function ThemeForm({ onSubmit }) {
             />
           ))}
         </article>
-        <button type="input">Add Theme</button>
+        <button className="saveButton" type="input">
+          Save Theme
+        </button>
       </form>
     </div>
   );
