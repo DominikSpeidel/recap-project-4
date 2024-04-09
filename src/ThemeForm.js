@@ -1,3 +1,5 @@
+import "./ThemeForm.css";
+
 const INITIAL_THEME = {
   name: "",
   colors: [
@@ -57,7 +59,9 @@ export default function ThemeForm({ onSubmit }) {
             />
           ))}
         </article>
-        <button type="input">Add Theme</button>
+        <button className="addButton" type="input">
+          Add Theme
+        </button>
       </form>
     </div>
   );

@@ -11,9 +11,21 @@ export default function App() {
     defaultValue: initialThemes,
   });
 
-  function handleAddTheme(newTheme) {
+  function handleAddTheme(newTheme, id) {
     const newThemeWithId = { ...newTheme, id: uuid() };
     setThemes([newThemeWithId, ...themes]);
+  }
+
+  function handleEditTheme(modifiedTheme, id) {
+    const modifiedState = themes.map((theme) => {
+      if (theme.id !== id) {
+        return theme;
+      }
+
+      return modifiedTheme;
+    });
+
+    setThemes(modifiedState);
   }
 
   function handleDeleteTheme(id) {
@@ -34,6 +46,7 @@ export default function App() {
           onHandleDelete={handleDeleteTheme}
           id={theme.id}
           onSubmit={handleAddTheme}
+          onEdit={handleEditTheme}
         />
       ))}
     </>

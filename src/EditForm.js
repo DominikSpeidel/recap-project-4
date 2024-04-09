@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./EditForm.css";
 
 /*const INITIAL_THEME = {
@@ -10,7 +11,9 @@ import "./EditForm.css";
   ],
 };*/
 
-export default function EditForm({ onSubmit, colors }) {
+export default function EditForm({ onSubmit, colors, themeName, onEdit, id }) {
+  const [name, setName] = useState(themeName);
+
   const initialData = colors;
 
   function handleSubmit(event) {
@@ -19,7 +22,7 @@ export default function EditForm({ onSubmit, colors }) {
     const formData = new FormData(form);
     const data = Object.fromEntries(formData);
 
-    const newTheme = {
+    const modifiedTheme = {
       name: data.name,
       colors: [
         {
@@ -40,14 +43,21 @@ export default function EditForm({ onSubmit, colors }) {
         },
       ],
     };
-    onSubmit(newTheme);
+    onEdit(modifiedTheme, id);
   }
 
   return (
     <div>
       <form onSubmit={handleSubmit}>
         <h3 className="edit">Edit Theme</h3>
-        <input type="text" name="name" required></input>
+        <input
+          type="text"
+          name="name"
+          value={name}
+          required
+          onChange={(event) => setName(event.target.value)}
+          style={{ textAlign: "center" }}
+        ></input>
         <article>
           {initialData.map((color) => (
             <input
@@ -59,7 +69,7 @@ export default function EditForm({ onSubmit, colors }) {
           ))}
         </article>
         <button className="saveButton" type="submit">
-          Save Theme
+          Save Theme ✅
         </button>
       </form>
     </div>

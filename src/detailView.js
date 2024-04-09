@@ -3,7 +3,15 @@ import ColorCard from "./ColorCard.js";
 import "./DetailView.css";
 import EditForm from "./EditForm.js";
 
-export default function DetailView({ colors, onHandleDelete, id, onSubmit }) {
+export default function DetailView({
+  colors,
+  onHandleDelete,
+  id,
+  onSubmit,
+  name,
+  onEdit,
+  onSubmit2,
+}) {
   const [edit, setEdit] = useState(false);
   function handleEditButton() {
     setEdit(!edit);
@@ -12,10 +20,20 @@ export default function DetailView({ colors, onHandleDelete, id, onSubmit }) {
 
   return (
     <>
-      <button onClick={handleEditButton}>{edit ? "back" : "Edit"}</button>
-      <button onClick={() => onHandleDelete(id)}>Delete</button>
+      <button className="editButton" onClick={handleEditButton}>
+        {edit ? "Go Back 👈🏽" : "Edit ✍🏽"}
+      </button>
+      <button className="deleteButton" onClick={() => onHandleDelete(id)}>
+        Delete 🗑️
+      </button>
       {edit ? (
-        <EditForm colors={colors} onSubmit={onSubmit}></EditForm>
+        <EditForm
+          colors={colors}
+          onSubmit={onSubmit}
+          themeName={name}
+          id={id}
+          onEdit={onEdit}
+        ></EditForm>
       ) : (
         <ul className="color-list">
           {colors.map((color, index) => (

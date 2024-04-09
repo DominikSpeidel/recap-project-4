@@ -3,7 +3,14 @@ import DetailView from "./detailView.js";
 import PreviewView from "./previewView.js";
 import { useState } from "react";
 
-export default function Theme({ colors, name, onHandleDelete, id, onSubmit }) {
+export default function Theme({
+  colors,
+  name,
+  onHandleDelete,
+  id,
+  onSubmit,
+  onEdit,
+}) {
   const [detailView, setDetailView] = useState(false);
   function toggleView() {
     setDetailView(!detailView);
@@ -21,10 +28,12 @@ export default function Theme({ colors, name, onHandleDelete, id, onSubmit }) {
 
       {detailView ? (
         <DetailView
+          name={name}
           colors={colors}
           onHandleDelete={onHandleDelete}
           id={id}
           onSubmit={onSubmit}
+          onEdit={onEdit}
         />
       ) : (
         <PreviewView colors={colors} />
